@@ -19,7 +19,6 @@ class DictionaryActivity : AppCompatActivity() {
         private const val GENERAL_MODE = "generalMode"
         private const val USER_DICTIONARY = "userDict"
         private const val IRREGULAR_VERBS = "irregularVerbs"
-        private const val PHRASAL_VERBS = "phrasalVerbs"
 
         fun newIntendUserDictionary(context: Context): Intent {
             val intent = Intent(context, DictionaryActivity::class.java)
