@@ -42,7 +42,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="15dp"
         android:elevation="5dp"
-        android:backgroundTint="@color/light_gray">
+        android:backgroundTint="@color/light_gray"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:layout_width="wrap_content"
