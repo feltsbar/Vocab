@@ -2,12 +2,12 @@ package com.example.vocab.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.vocab.R
+import kotlinx.android.synthetic.main.activity_dictionary.*
 
 class DictionaryActivity : AppCompatActivity() {
 
@@ -17,11 +17,17 @@ class DictionaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dictionary)
 
+        val adapter = UserDictionaryAdapter()
+        recycler_view.adapter = adapter
         viewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
-        viewModel.userDictionary.observe(this){
+        viewModel.userDictionary.observe(this) {
+            adapter.userDictionaryList = it
             Log.d("UserDictionary", it.toString())
         }
+
     }
+
+
 
     companion object {
         private const val USER_MODE = "userMode"

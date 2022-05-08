@@ -20,13 +20,11 @@ class DictionaryRepositoryImpl(application: Application): DictionaryRepository {
     private val mapper = DictionaryMapper()
     private val scope = CoroutineScope(Dispatchers.IO)
 
-    init {
-        scope.launch {
-            addUserWord(UserWord(value = "go(went gone)", translate = "Идти", thematics = "Irregular"))
-            addUserWord(UserWord(value = "be(was, were)", translate = "Быть", thematics = "Irregular"))
-            addUserWord(UserWord(value = "beautiful", translate = "Прекрасный", thematics = "None"))
-        }
-    }
+//    init {
+//        scope.launch {
+//            addUserWord(UserWord(value = "can", translate = "Мочь", thematics = "None"))
+//        }
+//    }
 
     override fun getUserDictionary(): LiveData<List<UserWord>> = Transformations.map(
         userDictionaryDao.getUserDictionary()
