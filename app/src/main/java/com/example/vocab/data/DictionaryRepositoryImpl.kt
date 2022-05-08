@@ -9,12 +9,24 @@ import com.example.vocab.data.entities.UserWordDbModel
 import com.example.vocab.domain.DictionaryRepository
 import com.example.vocab.domain.entities.GeneralWord
 import com.example.vocab.domain.entities.UserWord
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DictionaryRepositoryImpl(application: Application): DictionaryRepository {
 
     private val userDictionaryDao = AppDatabase.getInstance(application).appUserDictionaryDao()
     private val generalDictionaryDao = AppDatabase.getInstance(application).appGeneralDictionaryDao()
     private val mapper = DictionaryMapper()
+    private val scope = CoroutineScope(Dispatchers.IO)
+
+    init {
+        scope.launch {
+            addUserWord(UserWord(value = "go(went gone)", translate = "Идти", thematics = "Irregular"))
+            addUserWord(UserWord(value = "be(was, were)", translate = "Быть", thematics = "Irregular"))
+            addUserWord(UserWord(value = "beautiful", translate = "Прекрасный", thematics = "None"))
+        }
+    }
 
     override fun getUserDictionary(): LiveData<List<UserWord>> = Transformations.map(
         userDictionaryDao.getUserDictionary()
