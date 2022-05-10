@@ -7,8 +7,7 @@ import androidx.lifecycle.Transformations
 import com.example.vocab.data.entities.GeneralWordDbModel
 import com.example.vocab.data.entities.UserWordDbModel
 import com.example.vocab.domain.DictionaryRepository
-import com.example.vocab.domain.entities.GeneralWord
-import com.example.vocab.domain.entities.UserWord
+import com.example.vocab.domain.entities.Word
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
@@ -26,14 +25,14 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
 //        }
 //    }
 
-    override fun getUserDictionary(): LiveData<List<UserWord>> = Transformations.map(
+    override fun getUserDictionary(): LiveData<List<Word>> = Transformations.map(
         userDictionaryDao.getUserDictionary()
     ) {
         mapper.mapUserListDbModelToListEntity(it)
     }
 
-    override fun getUserWordsByThematics(thematics: String): LiveData<List<UserWord>> =
-        MediatorLiveData<List<UserWord>>().apply {
+    override fun getUserWordsByThematics(thematics: String): LiveData<List<Word>> =
+        MediatorLiveData<List<Word>>().apply {
             addSource(userDictionaryDao.getUserDictionary()) {
                 val sortedList: MutableList<UserWordDbModel> = mutableListOf()
                 for (i in it) {
@@ -45,27 +44,27 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
             }
         }
 
-    override suspend fun getUserWord(userWordId: Long): UserWord {
+    override suspend fun getUserWord(userWordId: Long): Word {
         val dbModel = userDictionaryDao.getUserWord(userWordId)
         return mapper.mapDbModelToUserWordEntity(dbModel)
     }
 
-    override suspend fun addUserWord(userWord: UserWord) {
-        userDictionaryDao.addUserWord(mapper.mapUserWordEntityToDbModel(userWord))
+    override suspend fun addUserWord(word: Word) {
+        userDictionaryDao.addUserWord(mapper.mapUserWordEntityToDbModel(word))
     }
 
-    override suspend fun deleteUserWord(userWord: UserWord) {
-        userDictionaryDao.deleteUserWord(userWord.id)
+    override suspend fun deleteUserWord(word: Word) {
+        userDictionaryDao.deleteUserWord(word.id)
     }
 
-    override fun getGeneralDictionary(): LiveData<List<GeneralWord>> = Transformations.map(
+    override fun getGeneralDictionary(): LiveData<List<Word>> = Transformations.map(
         generalDictionaryDao.getGeneralDictionary()
     ) {
         mapper.mapGeneralListDbModelToListEntity(it)
     }
 
-    override fun getGeneralWordsByThematics(thematics: String): LiveData<List<GeneralWord>> =
-        MediatorLiveData<List<GeneralWord>>().apply {
+    override fun getGeneralWordsByThematics(thematics: String): LiveData<List<Word>> =
+        MediatorLiveData<List<Word>>().apply {
             addSource(generalDictionaryDao.getGeneralDictionary()) {
                 val sortedList: MutableList<GeneralWordDbModel> = mutableListOf()
                 for (i in it) {
@@ -78,7 +77,7 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
             }
         }
 
-    override suspend fun getGeneralWord(wordId: Long): GeneralWord {
+    override suspend fun getGeneralWord(wordId: Long): Word {
         val dbModel = generalDictionaryDao.getGeneralWord(wordId)
         return mapper.mapDbModelToGeneralWordEntity(dbModel)
     }

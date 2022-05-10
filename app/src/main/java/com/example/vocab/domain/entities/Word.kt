@@ -9,6 +9,4 @@ data class Word (
     companion object{
         const val UNDEFINED_ID: Long = 0
     }
-
-    //
 }

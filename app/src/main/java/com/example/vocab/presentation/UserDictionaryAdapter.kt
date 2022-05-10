@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
-import com.example.vocab.domain.entities.UserWord
+import com.example.vocab.domain.entities.Word
 import kotlinx.android.synthetic.main.item_word.view.*
 
 class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWordViewHolder>() {
 
-    var userDictionaryList = listOf<UserWord>()
+    var userDictionaryList = listOf<Word>()
         set(value) {
             field = value
             notifyDataSetChanged()

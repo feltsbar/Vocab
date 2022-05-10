@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
-import com.example.vocab.domain.entities.UserWord
+import com.example.vocab.domain.entities.Word
 import com.example.vocab.domain.use_cases.DeleteUserWordUseCase
 import com.example.vocab.domain.use_cases.GetUserDictionaryUseCase
 import com.example.vocab.domain.use_cases.GetUserWordsByThematicsUseCase
@@ -21,16 +21,14 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
 
     val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<UserWord>>
 
-    fun deleteUserWord(userWord: UserWord){
+    fun deleteUserWord(userWord: Word){
         viewModelScope.launch {
             deleteUserWordUseCase.deleteUserWord(userWord)
         }
     }
 
-    fun getUserWordsByThematics(thematics : String): LiveData<List<UserWord>> {
+    fun getUserWordsByThematics(thematics : String): LiveData<List<Word>> {
         return getUserWordsByThematicsUseCase.getUserWordsByThematics(thematics)
     }
-
-
 
 }
