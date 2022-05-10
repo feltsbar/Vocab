@@ -28,11 +28,11 @@ class DictionaryMapper {
         thematics = generalWordDbModel.thematics
     )
 
-    fun mapUserListDbModelToListEntity(list : List<UserWordDbModel>) = list.map {
+    fun mapUserListDbModelToListEntity(list: List<UserWordDbModel>) = list.map {
         mapDbModelToUserWordEntity(it)
     }
 
-    fun mapGeneralListDbModelToListEntity(list : List<GeneralWordDbModel>) = list.map {
+    fun mapGeneralListDbModelToListEntity(list: List<GeneralWordDbModel>) = list.map {
         mapDbModelToGeneralWordEntity(it)
     }
 
