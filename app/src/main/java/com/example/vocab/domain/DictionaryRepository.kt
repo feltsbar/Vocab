@@ -1,19 +1,18 @@
 package com.example.vocab.domain
 
 import androidx.lifecycle.LiveData
-import com.example.vocab.domain.entities.GeneralWord
-import com.example.vocab.domain.entities.UserWord
+import com.example.vocab.domain.entities.Word
 
 interface DictionaryRepository {
 
-    fun getUserDictionary(): LiveData<List<UserWord>>
-    fun getUserWordsByThematics(thematics: String): LiveData<List<UserWord>>
-    suspend fun getUserWord(userWordId: Long): UserWord
-    suspend fun addUserWord(userWord: UserWord)
-    suspend fun deleteUserWord(userWord: UserWord)
+    fun getUserDictionary(): LiveData<List<Word>>
+    fun getUserWordsByThematics(thematics: String): LiveData<List<Word>>
+    suspend fun getUserWord(userWordId: Long): Word
+    suspend fun addUserWord(word: Word)
+    suspend fun deleteUserWord(word: Word)
 
-    fun getGeneralDictionary(): LiveData<List<GeneralWord>>
-    fun getGeneralWordsByThematics(thematics: String): LiveData<List<GeneralWord>>
-    suspend fun getGeneralWord(wordId: Long): GeneralWord
+    fun getGeneralDictionary(): LiveData<List<Word>>
+    fun getGeneralWordsByThematics(thematics: String): LiveData<List<Word>>
+    suspend fun getGeneralWord(wordId: Long): Word
 
 }
