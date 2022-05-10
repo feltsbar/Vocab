@@ -41,7 +41,7 @@ class DictionaryActivity : AppCompatActivity() {
             return intent
         }
 
-        fun newIntendGeneralDictionary(context: Context): Intent {
+        fun newIntendGeneralDictionary(context: Context, thematics : String): Intent {
             val intent = Intent(context, DictionaryActivity::class.java)
             intent.putExtra(GENERAL_MODE, IRREGULAR_VERBS)
             return intent

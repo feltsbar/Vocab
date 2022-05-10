@@ -6,9 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.domain.entities.Word
-import com.example.vocab.domain.use_cases.DeleteUserWordUseCase
-import com.example.vocab.domain.use_cases.GetUserDictionaryUseCase
-import com.example.vocab.domain.use_cases.GetUserWordsByThematicsUseCase
+import com.example.vocab.domain.use_cases.*
 import kotlinx.coroutines.launch
 
 class DictionaryViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,6 +16,9 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
     private val getUserWordsByThematicsUseCase = GetUserWordsByThematicsUseCase(repository)
     private val deleteUserWordUseCase = DeleteUserWordUseCase(repository)
+    private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
+    private val getGeneralWordsByThematicsUseCase = GetGeneralWordsByThematicsUseCase(repository)
+    private val getGeneralWordUseCase = GetGeneralWordUseCase(repository)
 
     val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<UserWord>>
 
