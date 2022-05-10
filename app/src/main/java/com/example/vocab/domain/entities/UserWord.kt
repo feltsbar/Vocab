@@ -9,4 +9,6 @@ data class UserWord (
     companion object{
         const val UNDEFINED_ID: Long = 0
     }
+
+    //
 }
