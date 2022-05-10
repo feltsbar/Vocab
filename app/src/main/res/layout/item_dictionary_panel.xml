@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    app:cardCornerRadius="16dp"
+    android:backgroundTint="@color/light_blue"
+    android:elevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <TextView
+        android:id="@+id/tv_dictionary_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="259 слов всего"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:paddingStart="8dp"
+        tools:ignore="RtlSymmetry" />
+
+</androidx.cardview.widget.CardView>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Vocab</string>
+    <string name="go_to_translate">Перейти к переводчику</string>
+    <string name="my_dictionary">Мой словарь</string>
+    <string name="default_text_in_card_view">235 слов всего</string>
+    <string name="sets_of_word">Наборы слов</string>
+    <string name="hint_enter_word">Введите слово</string>
 </resources>
