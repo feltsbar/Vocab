@@ -13,7 +13,7 @@ interface UserDictionaryDao {
     fun getUserDictionary(): LiveData<List<UserWordDbModel>>
 
     @Query("SELECT * FROM user_dictionary WHERE thematics IS :thematics")
-    fun getUserWordByThematics(thematics: String): LiveData<List<UserWordDbModel>>
+    suspend fun getUserWordByThematics(thematics: String): List<UserWordDbModel>
 
     @Query("SELECT * FROM user_dictionary WHERE id IS :wordId")
     suspend fun getUserWord(wordId: Long): UserWordDbModel

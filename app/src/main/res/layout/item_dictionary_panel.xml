@@ -10,7 +10,7 @@
     app:cardUseCompatPadding="true">
 
     <TextView
-        android:id="@+id/tv_dictionary_panel"
+        android:id="@+id/count_of_words"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="259 слов всего"

@@ -16,6 +16,7 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
     private val getUserWordsByThematicsUseCase = GetUserWordsByThematicsUseCase(repository)
     private val deleteUserWordUseCase = DeleteUserWordUseCase(repository)
+    private val addUserWordUseCase = AddUserWordUseCase(repository)
     private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
     private val getGeneralWordsByThematicsUseCase = GetGeneralWordsByThematicsUseCase(repository)
     private val getGeneralWordUseCase = GetGeneralWordUseCase(repository)
@@ -28,7 +29,7 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun getUserWordsByThematics(thematics : String): LiveData<List<Word>> {
+    suspend fun getUserWordsByThematics(thematics : String): List<Word> {
         return getUserWordsByThematicsUseCase.getUserWordsByThematics(thematics)
     }
 

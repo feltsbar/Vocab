@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/user_dictionary_panel"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="8dp"
+    android:text="@string/default_text_in_card_view"
+    android:textColor="@color/black"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:elevation="4dp"
+    android:background="@color/light_gray"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="12dp"/>

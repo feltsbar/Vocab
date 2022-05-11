@@ -11,7 +11,7 @@ interface GeneralDictionaryDao {
     fun getGeneralDictionary(): LiveData<List<GeneralWordDbModel>>
 
     @Query("SELECT * FROM general_dictionary WHERE thematics IS :thematics")
-    fun getGeneralWordByThematics(thematics: String): LiveData<List<GeneralWordDbModel>>
+    suspend fun getGeneralWordByThematics(thematics: String): List<GeneralWordDbModel>
 
     @Query("SELECT * FROM general_dictionary WHERE id IS :wordId")
     suspend fun getGeneralWord(wordId: Long): GeneralWordDbModel

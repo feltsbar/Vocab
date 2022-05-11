@@ -27,12 +27,9 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
             mapper.mapUserListDbModelToListEntity(it)
         }
 
-    override fun getUserWordsByThematics(thematics: String): LiveData<List<Word>> =
-        Transformations.map(
-            userDictionaryDao.getUserWordByThematics(thematics)
-        ) {
-            mapper.mapUserListDbModelToListEntity(it)
-        }
+    override suspend fun getUserWordsByThematics(thematics: String): List<Word> =
+        mapper.mapUserListDbModelToListEntity(userDictionaryDao.getUserWordByThematics(thematics))
+
 
     override suspend fun getUserWord(userWordId: Long): Word {
         val dbModel = userDictionaryDao.getUserWord(userWordId)
@@ -53,12 +50,12 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
         mapper.mapGeneralListDbModelToListEntity(it)
     }
 
-    override fun getGeneralWordsByThematics(thematics: String): LiveData<List<Word>> =
-        Transformations.map(
-            generalDictionaryDao.getGeneralWordByThematics(thematics)
-        ) {
-            mapper.mapGeneralListDbModelToListEntity(it)
-        }
+    override suspend fun getGeneralWordsByThematics(thematics: String): List<Word> =
+        mapper.mapGeneralListDbModelToListEntity(
+            generalDictionaryDao.getGeneralWordByThematics(
+                thematics
+            )
+        )
 
     override suspend fun getGeneralWord(wordId: Long): Word {
         val dbModel = generalDictionaryDao.getGeneralWord(wordId)
