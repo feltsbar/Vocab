@@ -16,6 +16,7 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
     private val getUserWordsByThematicsUseCase = GetUserWordsByThematicsUseCase(repository)
     private val deleteUserWordUseCase = DeleteUserWordUseCase(repository)
+    private val getUserWordUseCase = GetUserWordUseCase(repository)
     private val addUserWordUseCase = AddUserWordUseCase(repository)
     private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
     private val getGeneralWordsByThematicsUseCase = GetGeneralWordsByThematicsUseCase(repository)
@@ -23,9 +24,14 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
 
     val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<UserWord>>
 
-    fun deleteUserWord(userWord: Word){
+//    init {
+//        deleteUserWord(4)
+//        deleteUserWord(1)
+//    }
+
+    fun deleteUserWord(wordId: Long){
         viewModelScope.launch {
-            deleteUserWordUseCase.deleteUserWord(userWord)
+            deleteUserWordUseCase.deleteUserWord(wordId)
         }
     }
 

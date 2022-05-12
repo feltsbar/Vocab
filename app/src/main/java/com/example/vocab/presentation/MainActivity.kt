@@ -1,7 +1,6 @@
 package com.example.vocab.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.vocab.R
@@ -17,6 +16,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+//        viewModel.addGeneralWord(Word(
+//            value = "hello",
+//            translate = "Привет",
+//            thematics = "greeting"
+//        ))
+
 
         user_dictionary_panel.setOnClickListener {
             val intent = newIntendUserDictionary(this)
@@ -25,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.userDictionary.observe(this) {
             user_dictionary_panel.text = "${it.size} слов всего"
         }
+
+
+
 
 
     }

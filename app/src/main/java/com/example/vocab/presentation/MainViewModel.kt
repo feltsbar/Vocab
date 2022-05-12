@@ -1,14 +1,15 @@
 package com.example.vocab.presentation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.domain.entities.Word
-import com.example.vocab.domain.use_cases.GetGeneralDictionaryUseCase
-import com.example.vocab.domain.use_cases.GetGeneralWordsByThematicsUseCase
-import com.example.vocab.domain.use_cases.GetUserDictionaryUseCase
-import java.lang.RuntimeException
+import com.example.vocab.domain.use_cases.*
+import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -16,34 +17,43 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val getGeneralWordsByThematicsUseCase = GetGeneralWordsByThematicsUseCase(repository)
     private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
+    private val addGeneralWordUseCase = AddGeneralWordUseCase(repository)
 
-    // TODO: Реализовать отображение списка исходных тем на главном экране приложения!
-    // LiveData реализована по паттерну Синглтон, а значит на нее можно подключить наблюдателя!
-    // значит нужно использовать список слов, завернутых в LiveData !!!
-    // Сложность заключается в том, что на вход приходит список Word а на выходе я жду список строк
+    val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<Word>>
 
-    // Из медиатора вернуть список слов каждое из которых с уникальной тематикой, а далее в
-    // методе распарсить этот список ???
+//    init {
+//        viewModelScope.launch {
+//            addGeneralWordUseCase.addGeneralWord(Word(
+//                value = "hello",
+//                translate = "Привет",
+//                thematics = "greeting"
+//            )
+//            )
+//        }
+//    }
 
-    // Убрать LiveData из возвращаемого значения методов GetUserDictionaryByThematics
 
-    val userDictionary = getUserDictionaryUseCase.getUserDictionary()
-
-    fun getGeneralThematics(): List<String> {
-        val startList = getGeneralDictionaryUseCase.getGeneralDictionary().value
-        val resultMap = mutableMapOf<String, MutableList<Word>>()
-        if (startList == null) {
-            throw RuntimeException("General dictionary is empty!")
-        } else {
-            for (word in startList) {
-                if (resultMap.containsKey(word.thematics)) {
-                    resultMap[word.thematics]?.add(word)
-                } else {
-                    resultMap[word.thematics] = mutableListOf(word)
-                }
-            }
+     fun addGeneralWord(word: Word) {
+        viewModelScope.launch {
+            addGeneralWordUseCase.addGeneralWord(word)
         }
-        return resultMap.keys.toList()
     }
+
+//    fun getGeneralThematics(): List<String> {
+//        MediatorLiveData<List<Word>>().apply {
+//            addSource(getGeneralDictionaryUseCase.getGeneralDictionary()) {
+//                val resultMap = mutableMapOf<String, MutableList<Word>>()
+//                for (word in it) {
+//                    if (resultMap.containsKey(word.thematics)) {
+//                        resultMap[word.thematics]?.add(word)
+//                    } else {
+//                        resultMap[word.thematics] = mutableListOf(word)
+//                    }
+//                }
+//                value = resultMap.keys.toList()
+//            }
+//        }
+//    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.vocab.presentation
+package com.example.vocab.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View

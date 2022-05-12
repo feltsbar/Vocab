@@ -12,13 +12,6 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
     private val generalDictionaryDao =
         AppDatabase.getInstance(application).appGeneralDictionaryDao()
     private val mapper = DictionaryMapper()
-//    private val scope = CoroutineScope(Dispatchers.IO)
-//
-//    init {
-//        scope.launch {
-//            addUserWord(UserWord(value = "can", translate = "Мочь", thematics = "None"))
-//        }
-//    }
 
     override fun getUserDictionary(): LiveData<List<Word>> =
         Transformations.map(
@@ -36,14 +29,20 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
         return mapper.mapDbModelToUserWordEntity(dbModel)
     }
 
+    override suspend fun deleteUserWord(wordId: Long) {
+        userDictionaryDao.deleteUserWord(wordId)
+    }
+
+    //----------------------
     override suspend fun addUserWord(word: Word) {
         userDictionaryDao.addUserWord(mapper.mapUserWordEntityToDbModel(word))
     }
 
-    override suspend fun deleteUserWord(word: Word) {
-        userDictionaryDao.deleteUserWord(word.id)
+    override suspend fun addGeneralWord(word: Word) {
+        generalDictionaryDao.addGeneralWord(mapper.mapGeneralWordEntityToDbModel(word))
     }
 
+    //--------------------------------
     override fun getGeneralDictionary(): LiveData<List<Word>> = Transformations.map(
         generalDictionaryDao.getGeneralDictionary()
     ) {
@@ -60,5 +59,9 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
     override suspend fun getGeneralWord(wordId: Long): Word {
         val dbModel = generalDictionaryDao.getGeneralWord(wordId)
         return mapper.mapDbModelToGeneralWordEntity(dbModel)
+    }
+
+    override suspend fun deleteGeneralWord(wordId: Long) {
+        generalDictionaryDao.deleteGeneralWord(wordId)
     }
 }

@@ -3,10 +3,10 @@ package com.example.vocab.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.vocab.R
+import com.example.vocab.presentation.adapters.UserDictionaryAdapter
 import kotlinx.android.synthetic.main.activity_dictionary.*
 
 class DictionaryActivity : AppCompatActivity() {
@@ -22,12 +22,10 @@ class DictionaryActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
         viewModel.userDictionary.observe(this) {
             adapter.userDictionaryList = it
-            Log.d("UserDictionary", it.toString())
+            // Log.d("UserDictionary", it.toString())
         }
 
     }
-
-
 
     companion object {
         private const val USER_MODE = "userMode"

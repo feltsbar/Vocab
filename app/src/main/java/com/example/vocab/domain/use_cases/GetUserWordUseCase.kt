@@ -5,7 +5,7 @@ import com.example.vocab.domain.entities.Word
 
 class GetUserWordUseCase(private val dictionaryRepository: DictionaryRepository) {
 
-    suspend fun getUserWord(userWordId: Long): Word {
-        return dictionaryRepository.getUserWord(userWordId)
+    suspend fun getUserWord(wordId: Long): Word {
+        return dictionaryRepository.getUserWord(wordId)
     }
 }

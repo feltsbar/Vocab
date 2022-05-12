@@ -5,7 +5,7 @@ import com.example.vocab.domain.entities.Word
 
 class DeleteUserWordUseCase(private val dictionaryRepository: DictionaryRepository) {
 
-    suspend fun deleteUserWord(word: Word){
-        dictionaryRepository.deleteUserWord(word)
+    suspend fun deleteUserWord(wordId: Long){
+        dictionaryRepository.deleteUserWord(wordId)
     }
 }

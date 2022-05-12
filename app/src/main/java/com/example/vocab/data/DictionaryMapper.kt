@@ -13,6 +13,13 @@ class DictionaryMapper {
         thematics = word.thematics
     )
 
+    fun mapGeneralWordEntityToDbModel(word: Word) = GeneralWordDbModel(
+        id = word.id,
+        value = word.value,
+        translate = word.translate,
+        thematics = word.thematics
+    )
+
     fun mapDbModelToUserWordEntity(userWordDbModel: UserWordDbModel) = Word(
         id = userWordDbModel.id,
         value = userWordDbModel.value,
@@ -34,5 +41,21 @@ class DictionaryMapper {
     fun mapGeneralListDbModelToListEntity(list: List<GeneralWordDbModel>) = list.map {
         mapDbModelToGeneralWordEntity(it)
     }
+
+//    fun mapGeneralListToListThematics(list : List<GeneralWordDbModel>) : List<String> {
+//        MediatorLiveData<List<Word>>().apply {
+//            addSource(list) {
+//                val resultMap = mutableMapOf<String, MutableList<Word>>()
+//                for (word in it) {
+//                    if (resultMap.containsKey(word.thematics)) {
+//                        resultMap[word.thematics]?.add(word)
+//                    } else {
+//                        resultMap[word.thematics] = mutableListOf(word)
+//                    }
+//                }
+//                value = resultMap.keys.toList()
+//            }
+//        }
+//    }
 
 }
