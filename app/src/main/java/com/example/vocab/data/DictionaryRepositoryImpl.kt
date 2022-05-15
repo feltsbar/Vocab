@@ -24,8 +24,8 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
         mapper.mapUserListDbModelToListEntity(userDictionaryDao.getUserWordByThematics(thematics))
 
 
-    override suspend fun getUserWord(userWordId: Long): Word {
-        val dbModel = userDictionaryDao.getUserWord(userWordId)
+    override suspend fun getUserWord(wordId: Long): Word {
+        val dbModel = userDictionaryDao.getUserWord(wordId)
         return mapper.mapDbModelToUserWordEntity(dbModel)
     }
 

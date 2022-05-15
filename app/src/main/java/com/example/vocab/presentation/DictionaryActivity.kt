@@ -20,18 +20,17 @@ class DictionaryActivity : AppCompatActivity() {
         val adapter = UserDictionaryAdapter()
         recycler_view.adapter = adapter
         viewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
-        viewModel.userDictionary.observe(this) {
-            adapter.userDictionaryList = it
+        viewModel.generalDictionary.observe(this) {
+            adapter.dictionaryList = it
             // Log.d("UserDictionary", it.toString())
         }
-
     }
 
     companion object {
         private const val USER_MODE = "userMode"
         private const val GENERAL_MODE = "generalMode"
-        private const val USER_DICTIONARY = "userDict"
-        private const val IRREGULAR_VERBS = "irregularVerbs"
+        private const val USER_DICTIONARY = "Мой словарь"
+        private const val IRREGULAR_VERBS = "Неправильные глаголы"
 
         fun newIntendUserDictionary(context: Context): Intent {
             val intent = Intent(context, DictionaryActivity::class.java)
@@ -41,7 +40,7 @@ class DictionaryActivity : AppCompatActivity() {
 
         fun newIntendGeneralDictionary(context: Context, thematics : String): Intent {
             val intent = Intent(context, DictionaryActivity::class.java)
-            intent.putExtra(GENERAL_MODE, IRREGULAR_VERBS)
+            intent.putExtra(GENERAL_MODE, thematics)
             return intent
         }
     }

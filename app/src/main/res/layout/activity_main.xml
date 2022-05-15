@@ -48,41 +48,12 @@
         app:layout_constraintTop_toBottomOf="@id/tv_user_dictionary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="4dp"
+        android:elevation="2dp"
         android:background="@color/light_gray"
         android:clickable="true"
         android:focusable="true"
         app:cardUseCompatPadding="true"
         android:padding="8dp"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_user_dictionary"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_dictionary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="15dp"
-        android:elevation="4dp"
-        android:backgroundTint="@color/light_gray"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardUseCompatPadding="true"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/count_of_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_text_in_card_view"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_margin="12dp">
-        </TextView>
-    </androidx.cardview.widget.CardView>
-
 
     <TextView
         android:id="@+id/tv_sets_of_word"
@@ -99,12 +70,15 @@
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_thematics"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sets_of_word"
-        tools:listitem="@layout/dictionary_panel" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/dictionary_panel"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_word.view.*
 
 class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWordViewHolder>() {
 
-    var userDictionaryList = listOf<Word>()
+    var dictionaryList = listOf<Word>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -31,10 +31,10 @@ class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWor
     }
 
     override fun onBindViewHolder(holder: UserWordViewHolder, position: Int) {
-        val word = userDictionaryList[position]
+        val word = dictionaryList[position]
         holder.value.text = word.value
         holder.translate.text = word.translate
     }
 
-    override fun getItemCount() = userDictionaryList.size
+    override fun getItemCount() = dictionaryList.size
 }

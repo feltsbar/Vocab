@@ -23,6 +23,7 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val getGeneralWordUseCase = GetGeneralWordUseCase(repository)
 
     val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<UserWord>>
+    val generalDictionary = getGeneralDictionaryUseCase.getGeneralDictionary()
 
 //    init {
 //        deleteUserWord(4)
