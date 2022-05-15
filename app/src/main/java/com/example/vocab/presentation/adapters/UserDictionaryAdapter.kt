@@ -15,6 +15,7 @@ class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWor
             field = value
             notifyDataSetChanged()
         }
+    var onWordItemLongClick: ((Word) -> Unit)? = null
 
     inner class UserWordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val value = view.tv_value
@@ -34,6 +35,10 @@ class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWor
         val word = dictionaryList[position]
         holder.value.text = word.value
         holder.translate.text = word.translate
+        holder.itemView.setOnLongClickListener {
+            onWordItemLongClick?.invoke(word)
+            true
+        }
     }
 
     override fun getItemCount() = dictionaryList.size

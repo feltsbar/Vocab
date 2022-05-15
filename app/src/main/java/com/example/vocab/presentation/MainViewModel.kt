@@ -1,20 +1,18 @@
 package com.example.vocab.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.domain.entities.Word
-import com.example.vocab.domain.use_cases.*
+import com.example.vocab.domain.use_cases.AddGeneralWordUseCase
+import com.example.vocab.domain.use_cases.GetGeneralDictionaryUseCase
+import com.example.vocab.domain.use_cases.GetUserDictionaryUseCase
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = DictionaryRepositoryImpl(application)
-    private val getGeneralWordsByThematicsUseCase = GetGeneralWordsByThematicsUseCase(repository)
     private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
     private val addGeneralWordUseCase = AddGeneralWordUseCase(repository)
@@ -32,8 +30,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 //        }
 //    }
 
-
-     fun addGeneralWord(word: Word) {
+    suspend fun addGeneralWord(word: Word) {
         viewModelScope.launch {
             addGeneralWordUseCase.addGeneralWord(word)
         }

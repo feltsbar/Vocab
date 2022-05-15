@@ -2,7 +2,6 @@ package com.example.vocab.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.domain.entities.Word
@@ -25,19 +24,24 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     val userDictionary = getUserDictionaryUseCase.getUserDictionary() // LiveData<List<UserWord>>
     val generalDictionary = getGeneralDictionaryUseCase.getGeneralDictionary()
 
-//    init {
-//        deleteUserWord(4)
-//        deleteUserWord(1)
-//    }
+    fun addUserWord(word: Word) {
+        viewModelScope.launch {
+            addUserWordUseCase.addUserWord(word)
+        }
+    }
 
-    fun deleteUserWord(wordId: Long){
+    fun deleteUserWord(wordId: Long) {
         viewModelScope.launch {
             deleteUserWordUseCase.deleteUserWord(wordId)
         }
     }
 
-    suspend fun getUserWordsByThematics(thematics : String): List<Word> {
+    suspend fun getUserWordsByThematics(thematics: String): List<Word> {
         return getUserWordsByThematicsUseCase.getUserWordsByThematics(thematics)
+    }
+
+    suspend fun getGeneralWordsByThematics(thematics: String): List<Word> {
+        return getGeneralWordsByThematicsUseCase.getGeneralWordsByThematics(thematics)
     }
 
 }
