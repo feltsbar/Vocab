@@ -8,7 +8,7 @@ import com.example.vocab.R
 import com.example.vocab.domain.entities.Word
 import kotlinx.android.synthetic.main.item_word.view.*
 
-class UserDictionaryAdapter : RecyclerView.Adapter<UserDictionaryAdapter.UserWordViewHolder>() {
+class DictionaryAdapter : RecyclerView.Adapter<DictionaryAdapter.UserWordViewHolder>() {
 
     var dictionaryList = listOf<Word>()
         set(value) {

@@ -3,18 +3,17 @@ package com.example.vocab.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.vocab.R
 import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendGeneralDictionary
 import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendUserDictionary
 import com.example.vocab.presentation.adapters.ThematicsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: ThematicsAdapter
-    private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +37,15 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = ThematicsAdapter()
         recycler_view_thematics.adapter = adapter
-        adapter.thematicList = listOf("irregularVerbs", "SPORT", "FOOD", "NATURE", "CLOTHES")
+        val listOfThematics = listOf("irregularVerbs", "SPORT", "FOOD", "NATURE", "CLOTHES")
+        adapter.thematicList = listOfThematics
         adapter.onThematicItemClick = {
             val intent = newIntendGeneralDictionary(this, it)
             startActivity(intent)
         }
+
+
+
     }
 
 }

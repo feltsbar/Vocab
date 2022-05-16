@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
+import com.example.vocab.domain.entities.Word
 
 class ThematicsAdapter : RecyclerView.Adapter<ThematicsAdapter.ThematicsViewHolder>() {
     var thematicList = listOf<String>()
@@ -17,7 +18,6 @@ class ThematicsAdapter : RecyclerView.Adapter<ThematicsAdapter.ThematicsViewHold
 
     inner class ThematicsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvNamePanel = view.findViewById<TextView>(R.id.text_view_theme)
-        val tvCountWords = view.findViewById<TextView>(R.id.text_view_count_of_words)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThematicsViewHolder {

@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
-import com.example.vocab.presentation.adapters.UserDictionaryAdapter
+import com.example.vocab.presentation.adapters.DictionaryAdapter
 import kotlinx.android.synthetic.main.activity_dictionary.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +29,7 @@ class DictionaryActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(thematics: String = "") {
-        val adapter = UserDictionaryAdapter()
+        val adapter = DictionaryAdapter()
         recycler_view.adapter = adapter
         if (thematics == "") {
             val extraContent = intent.getStringExtra(EXTRA_CONTENT).toString()
@@ -35,22 +37,48 @@ class DictionaryActivity : AppCompatActivity() {
             viewModel.userDictionary.observe(this) {
                 adapter.dictionaryList = it
             }
+            addItemTouchHelperOnRV(adapter)
         } else {
             val extraThematic = intent.getStringExtra(EXTRA_CONTENT).toString()
             title = extraThematic
             scope.launch {
                 adapter.dictionaryList = viewModel.getGeneralWordsByThematics(extraThematic)
             }
-            adapter.onWordItemLongClick = {
-                viewModel.addUserWord(it)
-                Toast.makeText(
-                    this@DictionaryActivity,
-                    "Слово добавлено в Мой словарь!",
-                    Toast.LENGTH_SHORT
-                ).show()
+            setupLongClickListenerOnRV(adapter)
+        }
+    }
+
+    private fun setupLongClickListenerOnRV(adapter: DictionaryAdapter) {
+        adapter.onWordItemLongClick = {
+            viewModel.addUserWord(it)
+            Toast.makeText(
+                this@DictionaryActivity,
+                "Слово добавлено в Мой словарь!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun addItemTouchHelperOnRV(adapter: DictionaryAdapter) {
+        val callback = object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false // todo Можно реализовать перетаскивание слов в словаре ?
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val wordItem = adapter.dictionaryList[viewHolder.adapterPosition]
+                viewModel.deleteUserWord(wordItem.id)
             }
         }
-
+        val itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(recycler_view)
     }
 
     private fun parseIntent() {

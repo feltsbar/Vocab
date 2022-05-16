@@ -22,15 +22,5 @@
             android:layout_weight="1"
             android:padding="12dp"
             android:text="@string/irregular_verbs" />
-
-        <TextView
-            android:id="@+id/text_view_count_of_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="234"
-            android:padding="12dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
