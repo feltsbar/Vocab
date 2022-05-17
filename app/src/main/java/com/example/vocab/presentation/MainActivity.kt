@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             "Неправильные глаголы",
             "IT-термины",
             "Для путешествий",
-            "CLOTHES")
+            "Для литератора")
         adapter.thematicList = listOfThematics
         adapter.onThematicItemClick = {
             val intent = newIntendGeneralDictionary(this, it)
