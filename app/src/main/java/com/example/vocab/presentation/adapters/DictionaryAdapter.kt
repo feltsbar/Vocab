@@ -3,18 +3,16 @@ package com.example.vocab.presentation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
 import com.example.vocab.domain.entities.Word
+import com.example.vocab.presentation.WordItemDiffCallback
 import kotlinx.android.synthetic.main.item_word.view.*
 
-class DictionaryAdapter : RecyclerView.Adapter<DictionaryAdapter.UserWordViewHolder>() {
+class DictionaryAdapter :
+    ListAdapter<Word, DictionaryAdapter.UserWordViewHolder>(WordItemDiffCallback()) {
 
-    var dictionaryList = listOf<Word>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
     var onWordItemLongClick: ((Word) -> Unit)? = null
 
     inner class UserWordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,7 +30,7 @@ class DictionaryAdapter : RecyclerView.Adapter<DictionaryAdapter.UserWordViewHol
     }
 
     override fun onBindViewHolder(holder: UserWordViewHolder, position: Int) {
-        val word = dictionaryList[position]
+        val word = getItem(position)
         holder.value.text = word.value
         holder.translate.text = word.translate
         holder.itemView.setOnLongClickListener {
@@ -41,5 +39,4 @@ class DictionaryAdapter : RecyclerView.Adapter<DictionaryAdapter.UserWordViewHol
         }
     }
 
-    override fun getItemCount() = dictionaryList.size
 }

@@ -25,7 +25,6 @@ class DictionaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dictionary)
         viewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
-        setupRecyclerView()
         parseIntent()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -44,14 +43,14 @@ class DictionaryActivity : AppCompatActivity() {
             val extraContent = intent.getStringExtra(EXTRA_CONTENT).toString()
             title = extraContent
             viewModel.userDictionary.observe(this) {
-                adapter.dictionaryList = it
+                adapter.submitList(it)
             }
             addItemTouchHelperOnRV(adapter)
         } else {
             val extraThematic = intent.getStringExtra(EXTRA_CONTENT).toString()
             title = extraThematic
             scope.launch {
-                adapter.dictionaryList = viewModel.getGeneralWordsByThematics(extraThematic)
+                adapter.submitList(viewModel.getGeneralWordsByThematics(extraThematic))
             }
             setupLongClickListenerOnRV(adapter)
         }
@@ -82,7 +81,7 @@ class DictionaryActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val wordItem = adapter.dictionaryList[viewHolder.adapterPosition]
+                val wordItem = adapter.currentList[viewHolder.adapterPosition]
                 viewModel.deleteUserWord(wordItem.id)
             }
         }
