@@ -34,7 +34,12 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = ThematicsAdapter()
         recycler_view_thematics.adapter = adapter
-        val listOfThematics = listOf("Неправильные глаголы", "IT-термины", "FOOD", "NATURE", "CLOTHES")
+        val listOfThematics = listOf(
+            "Топ 100 используемых слов",
+            "Неправильные глаголы",
+            "IT-термины",
+            "Для путешествий",
+            "CLOTHES")
         adapter.thematicList = listOfThematics
         adapter.onThematicItemClick = {
             val intent = newIntendGeneralDictionary(this, it)
