@@ -3,11 +3,13 @@ package com.example.vocab.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.vocab.R
 import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendGeneralDictionary
 import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendUserDictionary
 import com.example.vocab.presentation.adapters.ThematicsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
@@ -24,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.userDictionary.observe(this) {
             user_dictionary_panel.text = "${it.size} слов всего"
+        }
+        viewModel.generalDictionary.observe(this) {
+            if (it.isEmpty()) lifecycleScope.launch {
+                viewModel.fillGeneralDictionary()
+            }
         }
         user_dictionary_panel.setOnClickListener {
             val intent = newIntendUserDictionary(this)

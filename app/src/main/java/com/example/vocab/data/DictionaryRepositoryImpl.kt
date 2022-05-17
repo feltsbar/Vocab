@@ -64,4 +64,8 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
     override suspend fun deleteGeneralWord(wordId: Long) {
         generalDictionaryDao.deleteGeneralWord(wordId)
     }
+
+    override suspend fun deleteAllFromGeneralDictionary() {
+        generalDictionaryDao.deleteAllFromGeneralDictionary()
+    }
 }

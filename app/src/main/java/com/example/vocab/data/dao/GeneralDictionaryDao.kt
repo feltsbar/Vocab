@@ -23,4 +23,7 @@ interface GeneralDictionaryDao {
 
     @Query("DELETE FROM general_dictionary WHERE id=:wordId")
     suspend fun deleteGeneralWord(wordId: Long)
+
+    @Query("DELETE FROM general_dictionary")
+    suspend fun deleteAllFromGeneralDictionary()
 }
