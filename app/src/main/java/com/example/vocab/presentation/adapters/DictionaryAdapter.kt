@@ -1,5 +1,6 @@
 package com.example.vocab.presentation.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ class DictionaryAdapter :
     ListAdapter<Word, DictionaryAdapter.UserWordViewHolder>(WordItemDiffCallback()) {
 
     var onWordItemLongClick: ((Word) -> Unit)? = null
+    var countBind = 0
+    var countCreate = 0
 
     inner class UserWordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val value = view.tv_value
@@ -21,6 +24,7 @@ class DictionaryAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserWordViewHolder {
+        Log.d("ViewHolder", "onCreateViewHolder : ${++countCreate}")
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.item_word,
             parent,
