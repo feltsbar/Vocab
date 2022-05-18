@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         adapter = ThematicsAdapter()
         recycler_view_thematics.adapter = adapter
         val listOfThematics = listOf(
-            "Топ 100 используемых слов",
+            "Топ 100 слов",
             "Неправильные глаголы",
             "IT-термины",
             "Для путешествий",
