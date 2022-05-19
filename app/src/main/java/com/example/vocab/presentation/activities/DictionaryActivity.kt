@@ -1,4 +1,4 @@
-package com.example.vocab.presentation
+package com.example.vocab.presentation.activities
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
+import com.example.vocab.presentation.view_models.DictionaryViewModel
 import com.example.vocab.presentation.adapters.DictionaryAdapter
 import kotlinx.android.synthetic.main.activity_dictionary.*
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.vocab.presentation
+package com.example.vocab.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,12 +1,13 @@
-package com.example.vocab.presentation
+package com.example.vocab.presentation.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.vocab.R
-import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendGeneralDictionary
-import com.example.vocab.presentation.DictionaryActivity.Companion.newIntendUserDictionary
+import com.example.vocab.presentation.activities.DictionaryActivity.Companion.newIntendGeneralDictionary
+import com.example.vocab.presentation.activities.DictionaryActivity.Companion.newIntendUserDictionary
+import com.example.vocab.presentation.view_models.MainViewModel
 import com.example.vocab.presentation.adapters.ThematicsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.vocab.presentation
+package com.example.vocab.presentation.view_models
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

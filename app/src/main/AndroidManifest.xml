@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vocab">
         <activity
-            android:name=".presentation.TranslateActivity"
+            android:name=".presentation.activities.TranslateActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.DictionaryActivity"
+            android:name=".presentation.activities.DictionaryActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.activities.MainActivity"
             android:exported="true"
             android:theme="@style/ActivityMainTheme" >
             <intent-filter>
