@@ -10,14 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vocab">
         <activity
+            android:name=".presentation.TranslateActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.DictionaryActivity"
-            android:theme="@style/DictionaryTheme"
             android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/ActivityMainTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

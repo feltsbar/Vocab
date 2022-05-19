@@ -4,6 +4,6 @@
     <string name="my_dictionary">Мой словарь</string>
     <string name="irregular_verbs">Неправильные глаголы</string>
     <string name="default_text_in_card_view">235 слов всего</string>
-    <string name="sets_of_word">Наборы словарей</string>
+    <string name="sets_of_word">Наборы слов</string>
     <string name="hint_enter_word">Введите слово</string>
 </resources>
