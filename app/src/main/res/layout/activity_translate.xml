@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.TranslateActivity">
+    tools:context=".presentation.TranslateActivity"
+    android:background="@color/light_gray">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_translate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_base_text"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:text="Русский"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/til_text_to_translate"
+                app:layout_constraintEnd_toStartOf="@id/button_change_language"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlCompat,RtlSymmetry" />
+
+            <Button
+                android:id="@+id/button_change_language"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_swap"
+                app:layout_constraintBottom_toTopOf="@id/til_text_to_translate"
+                app:layout_constraintEnd_toStartOf="@id/tv_result_text"
+                app:layout_constraintStart_toEndOf="@id/tv_base_text"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_result_text"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:paddingStart="12dp"
+                android:singleLine="true"
+                android:text="Английский"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/til_text_to_translate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button_change_language"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlCompat,RtlSymmetry" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_text_to_translate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_base_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_text_to_translate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hello world"
+                    android:textSize="20sp"
+                    android:hint="@string/hint_enter_text_to_translate"
+                    android:inputType="text"
+                    android:maxHeight="300dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_translated_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:maxHeight="300dp"
+                android:textColor="@color/black"
+                android:text="Привет мир"
+                android:textSize="20sp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_text_to_translate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

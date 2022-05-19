@@ -6,4 +6,5 @@
     <string name="default_text_in_card_view">235 слов всего</string>
     <string name="sets_of_word">Наборы слов</string>
     <string name="hint_enter_word">Введите слово</string>
+    <string name="hint_enter_text_to_translate">Введите текст или слово</string>
 </resources>
