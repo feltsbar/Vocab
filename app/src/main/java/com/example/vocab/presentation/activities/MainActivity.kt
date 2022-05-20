@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.vocab.R
 import com.example.vocab.presentation.activities.DictionaryActivity.Companion.newIntendGeneralDictionary
 import com.example.vocab.presentation.activities.DictionaryActivity.Companion.newIntendUserDictionary
+import com.example.vocab.presentation.activities.TranslateActivity.Companion.newIntendTranslate
 import com.example.vocab.presentation.view_models.MainViewModel
 import com.example.vocab.presentation.adapters.ThematicsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupUserDictionaryPanel()
         setupRecyclerView()
+        button_open_translator.setOnClickListener {
+            val intent = newIntendTranslate(this)
+            startActivity(intent)
+        }
     }
 
     private fun setupUserDictionaryPanel() {
