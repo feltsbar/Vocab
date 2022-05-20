@@ -10,7 +10,7 @@ interface ApiService {
 
     @POST("translate")
     fun getTranslatedText(
-        @Query(QUERY_BODY_FOLDER_ID) folderId : String = "b1gdti20dbhqdln0pmdo",
+//        @Query(QUERY_BODY_FOLDER_ID) folderId : String = "",
         @Query(QUERY_BODY_TEXTS) texts : List<String> = listOf(""),
         @Query(QUERY_BODY_TARGET_LANGUAGE)targetLanguageCode: String,
         @Query(QUERY_BODY_SOURCE_LANGUAGE)sourceLanguageCode: String
@@ -26,6 +26,4 @@ interface ApiService {
 
     }
 
-//    private const val ACCOUNT_FOLDER_ID = "b1gdti20dbhqdln0pmdo"
-//    @Query(QUERY_PARAM_API_KEY) api_key : String = "AQVNynCv645-tF0Xs4QlpIGQlc03Hp47D5KVfpKx",
 }
