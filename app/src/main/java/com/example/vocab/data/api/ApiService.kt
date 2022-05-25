@@ -12,7 +12,7 @@ interface ApiService {
     @POST("translate")
     @Headers(
         "Content-Type: application/json",
-        "Authorization: Api-Key " //todo Вписать API_KEY
+        "Authorization: Api-Key " // todo: add API_KEY
     )
     fun getTranslatedText(@Body postBody: PostBody): Single<TranslationInfoListOfData>
 

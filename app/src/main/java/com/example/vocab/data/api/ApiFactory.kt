@@ -6,7 +6,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
-    private const val BASE_URL = "https://translate.api.cloud.yandex.net/translate/v2/"
+    private const val BASE_URL = "" // todo: add base url
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()

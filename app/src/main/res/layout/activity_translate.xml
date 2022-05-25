@@ -98,7 +98,6 @@
                 android:paddingTop="8dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                android:text="Привет мир"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@id/til_text_to_translate" />
 
             <Button
-                android:id="@+id/button_add_word_to_user_dictionary"
+                android:id="@+id/button_translate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
