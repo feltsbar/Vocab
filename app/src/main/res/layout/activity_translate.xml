@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_enter_text_to_translate"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:maxHeight="200dp"
                     android:textSize="20sp" />
 
@@ -99,6 +99,7 @@
                 android:paddingBottom="8dp"
                 android:textColor="@color/black"
                 android:textSize="22sp"
+                android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_text_to_translate" />
@@ -106,7 +107,7 @@
             <Button
                 android:id="@+id/button_add_to_user_dictionary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginEnd="2dp"
                 android:background="@color/sea"
                 android:backgroundTint="@color/sea"
@@ -120,7 +121,7 @@
             <Button
                 android:id="@+id/button_translate"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:textSize="12sp"
                 android:text="@string/btn_translate"
                 android:layout_marginStart="2dp"
@@ -128,7 +129,8 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/button_add_to_user_dictionary"
-                app:layout_constraintTop_toBottomOf="@+id/tv_translated_text" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_translated_text"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

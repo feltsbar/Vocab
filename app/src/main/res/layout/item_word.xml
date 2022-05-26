@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:elevation="4dp"
+    android:padding="4dp"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
@@ -24,7 +25,7 @@
             android:layout_weight="1"
             android:text="understand (understood, understood) "
             android:textColor="@color/color_primary"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -33,6 +34,6 @@
             android:layout_height="wrap_content"
             android:text="понимать"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

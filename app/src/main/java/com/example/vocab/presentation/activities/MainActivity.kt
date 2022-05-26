@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.fillGeneralDictionary()
             }
         }
-        user_dictionary_panel.setOnClickListener {
+        card_user_dictionary_panel.setOnClickListener {
             val intent = newIntendUserDictionary(this)
             startActivity(intent)
         }
@@ -58,8 +58,6 @@ class MainActivity : AppCompatActivity() {
             val intent = newIntendGeneralDictionary(this, it)
             startActivity(intent)
         }
-
-
     }
 
 }

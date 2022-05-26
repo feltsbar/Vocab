@@ -12,7 +12,8 @@
         <activity
             android:name=".presentation.activities.TranslateActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".presentation.activities.DictionaryActivity"
             android:exported="false"
