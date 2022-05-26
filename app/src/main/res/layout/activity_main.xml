@@ -10,17 +10,17 @@
     <Button
         android:id="@+id/button_open_translator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:maxHeight="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Переводчик"
+        android:text="@string/tv_translator"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:background="@drawable/rectangle_rounded_all"
-        android:backgroundTint="@color/blue"/>
+        android:backgroundTint="@color/color_primary"/>
 
     <TextView
         android:id="@+id/tv_user_dictionary"
@@ -71,12 +71,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_thematics"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sets_of_word"
-        tools:listitem="@layout/dictionary_panel"
+        tools:listitem="@layout/thematic_panel"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

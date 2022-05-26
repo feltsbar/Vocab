@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.data.api.ApiFactory
 import com.example.vocab.data.pojo.PostBody
+import com.example.vocab.domain.entities.Word
 import com.example.vocab.domain.use_cases.AddUserWordUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,8 +24,34 @@ class TranslateViewModel(application: Application) : AndroidViewModel(applicatio
     val translatedTextLD: LiveData<String>
         get() = _translatedTextLD
 
-    // Метод собирает введенный пользователем текст и проверяет языки с какого на какой переводить
-    // и сам введеный текст, для дальнейшего возврата готовго тела для запроса
+    fun addUserWord(sourceLanguage: String, sourceText: String, targetText: String) {
+        if (sourceLanguage.isNotBlank()) {
+            when (sourceLanguage) {
+                ENGLISH_INPUT_LANGUAGE -> {
+                    val word = Word(
+                        value = sourceText,
+                        translate = targetText,
+                        thematics = NEW_WORDS_THEMATIC
+                    )
+                    viewModelScope.launch {
+                        addUserWordUseCase.addUserWord(word)
+                    }
+                }
+                RUSSIAN_INPUT_LANGUAGE -> {
+                    val word = Word(
+                        value = targetText,
+                        translate = sourceText,
+                        thematics = NEW_WORDS_THEMATIC
+                    )
+                    viewModelScope.launch {
+                        addUserWordUseCase.addUserWord(word)
+                    }
+                }
+                else -> throw IllegalArgumentException("Unknown sourceLanguage!")
+            }
+        }
+    }
+
     fun collectUserDataToPostBody(
         inputTexts: List<String?>,
         targetLanguage: String,
@@ -58,7 +85,6 @@ class TranslateViewModel(application: Application) : AndroidViewModel(applicatio
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     _translatedTextLD.postValue(it.translationsList?.get(0)?.text.toString())
-
                 }, {
                     Log.d("LOG", it.message.toString())
                 })
@@ -67,6 +93,7 @@ class TranslateViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     companion object {
+        private const val NEW_WORDS_THEMATIC = "Свои слова"
         private const val RUSSIAN_LANGUAGE = "ru"
         private const val ENGLISH_LANGUAGE = "en"
         private const val RUSSIAN_INPUT_LANGUAGE = "Русский"

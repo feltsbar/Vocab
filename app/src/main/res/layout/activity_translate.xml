@@ -83,7 +83,6 @@
                     android:hint="@string/hint_enter_text_to_translate"
                     android:inputType="text"
                     android:maxHeight="200dp"
-                    android:text="Hello world"
                     android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,13 +104,32 @@
                 app:layout_constraintTop_toBottomOf="@id/til_text_to_translate" />
 
             <Button
-                android:id="@+id/button_translate"
-                android:layout_width="match_parent"
+                android:id="@+id/button_add_to_user_dictionary"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="2dp"
+                android:background="@color/sea"
+                android:backgroundTint="@color/sea"
+                android:text="@string/btn_add_to_user_dictionary"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/button_translate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_translated_text" />
+
+            <Button
+                android:id="@+id/button_translate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/btn_translate"
+                android:layout_marginStart="2dp"
+                android:background="@color/color_primary"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_add_to_user_dictionary"
+                app:layout_constraintTop_toBottomOf="@+id/tv_translated_text" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -120,10 +138,11 @@
         android:id="@+id/translate_by_yandex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:gravity="center"
         android:text="Переведено с помощью Яндекс.Переводчик"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

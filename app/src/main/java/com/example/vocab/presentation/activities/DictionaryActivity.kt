@@ -15,6 +15,7 @@ import com.example.vocab.presentation.adapters.DictionaryAdapter
 import kotlinx.android.synthetic.main.activity_dictionary.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class DictionaryActivity : AppCompatActivity() {
@@ -124,6 +125,11 @@ class DictionaryActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_CONTENT, thematics)
             return intent
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.cancel()
     }
 
 }

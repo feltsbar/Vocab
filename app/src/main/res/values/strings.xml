@@ -7,4 +7,7 @@
     <string name="sets_of_word">Наборы слов</string>
     <string name="hint_enter_word">Введите слово</string>
     <string name="hint_enter_text_to_translate">Введите текст или слово</string>
+    <string name="btn_translate">Перевести</string>
+    <string name="btn_add_to_user_dictionary">Добавить в словарь</string>
+    <string name="tv_translator">Переводчик</string>
 </resources>
