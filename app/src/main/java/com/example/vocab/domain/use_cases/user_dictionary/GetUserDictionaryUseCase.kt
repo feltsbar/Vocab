@@ -1,4 +1,4 @@
-package com.example.vocab.domain.use_cases
+package com.example.vocab.domain.use_cases.user_dictionary
 
 import androidx.lifecycle.LiveData
 import com.example.vocab.domain.DictionaryRepository

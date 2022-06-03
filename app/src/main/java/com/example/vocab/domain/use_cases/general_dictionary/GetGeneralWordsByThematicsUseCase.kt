@@ -1,4 +1,4 @@
-package com.example.vocab.domain.use_cases
+package com.example.vocab.domain.use_cases.general_dictionary
 
 import com.example.vocab.domain.DictionaryRepository
 import com.example.vocab.domain.entities.Word

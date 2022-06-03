@@ -10,7 +10,7 @@ import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.data.api.ApiFactory
 import com.example.vocab.data.pojo.PostBody
 import com.example.vocab.domain.entities.Word
-import com.example.vocab.domain.use_cases.AddUserWordUseCase
+import com.example.vocab.domain.use_cases.user_dictionary.AddUserWordUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
