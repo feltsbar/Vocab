@@ -23,11 +23,6 @@ class DictionaryRepositoryImpl(application: Application) : DictionaryRepository 
     override suspend fun getUserWordsByThematics(thematics: String): List<Word> =
         mapper.mapUserListDbModelToListEntity(userDictionaryDao.getUserWordByThematics(thematics))
 
-    override suspend fun getUserWord(wordId: Long): Word {
-        val dbModel = userDictionaryDao.getUserWord(wordId)
-        return mapper.mapDbModelToUserWordEntity(dbModel)
-    }
-
     override suspend fun deleteUserWord(wordId: Long) {
         userDictionaryDao.deleteUserWord(wordId)
     }

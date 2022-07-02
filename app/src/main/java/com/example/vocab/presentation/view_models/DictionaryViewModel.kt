@@ -10,7 +10,6 @@ import com.example.vocab.domain.use_cases.general_dictionary.GetGeneralWordsByTh
 import com.example.vocab.domain.use_cases.user_dictionary.AddUserWordUseCase
 import com.example.vocab.domain.use_cases.user_dictionary.DeleteUserWordUseCase
 import com.example.vocab.domain.use_cases.user_dictionary.GetUserDictionaryUseCase
-import com.example.vocab.domain.use_cases.user_dictionary.GetUserWordsByThematicsUseCase
 import kotlinx.coroutines.launch
 
 class DictionaryViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,7 +17,6 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
     private val repository = DictionaryRepositoryImpl(application)
 
     private val getUserDictionaryUseCase = GetUserDictionaryUseCase(repository)
-    private val getUserWordsByThematicsUseCase = GetUserWordsByThematicsUseCase(repository)
     private val deleteUserWordUseCase = DeleteUserWordUseCase(repository)
     private val addUserWordUseCase = AddUserWordUseCase(repository)
     private val getGeneralDictionaryUseCase = GetGeneralDictionaryUseCase(repository)
@@ -37,10 +35,6 @@ class DictionaryViewModel(application: Application) : AndroidViewModel(applicati
         viewModelScope.launch {
             deleteUserWordUseCase.deleteUserWord(wordId)
         }
-    }
-
-    suspend fun getUserWordsByThematics(thematics: String): List<Word> {
-        return getUserWordsByThematicsUseCase.getUserWordsByThematics(thematics)
     }
 
     suspend fun getGeneralWordsByThematics(thematics: String): List<Word> {
