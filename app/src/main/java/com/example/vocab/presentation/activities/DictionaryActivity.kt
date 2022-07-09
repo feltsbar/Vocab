@@ -4,14 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vocab.R
-import com.example.vocab.presentation.view_models.DictionaryViewModel
 import com.example.vocab.presentation.adapters.DictionaryAdapter
+import com.example.vocab.presentation.view_models.DictionaryViewModel
 import kotlinx.android.synthetic.main.activity_dictionary.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +47,8 @@ class DictionaryActivity : AppCompatActivity() {
             title = extraContent
             viewModel.userDictionary.observe(this) {
                 adapter.submitList(it)
+                if (it.isEmpty()) tv_no_words.visibility =
+                    View.VISIBLE else tv_no_words.visibility = View.GONE
             }
             addItemTouchHelperOnRV(adapter)
         } else {
@@ -79,7 +82,7 @@ class DictionaryActivity : AppCompatActivity() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                return false // todo Можно реализовать перетаскивание слов в словаре ?
+                return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -98,6 +101,7 @@ class DictionaryActivity : AppCompatActivity() {
                     setupRecyclerView()
                 }
                 intent.getStringExtra(DICTIONARY_MODE) == GENERAL_MODE -> {
+                    tv_no_words.visibility = View.GONE
                     setupRecyclerView(intent.getStringExtra(EXTRA_CONTENT).toString())
                 }
                 else -> throw RuntimeException("Unknown DICTIONARY_MODE !")

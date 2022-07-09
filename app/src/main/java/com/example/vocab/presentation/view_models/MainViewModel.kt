@@ -5,7 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.vocab.data.DictionaryRepositoryImpl
 import com.example.vocab.domain.entities.Word
-import com.example.vocab.domain.use_cases.*
+import com.example.vocab.domain.use_cases.general_dictionary.AddGeneralWordUseCase
+import com.example.vocab.domain.use_cases.general_dictionary.DeleteAllFromGeneralDictionary
+import com.example.vocab.domain.use_cases.general_dictionary.GetGeneralDictionaryUseCase
+import com.example.vocab.domain.use_cases.user_dictionary.GetUserDictionaryUseCase
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

@@ -7,7 +7,6 @@ interface DictionaryRepository {
 
     fun getUserDictionary(): LiveData<List<Word>>
     suspend fun getUserWordsByThematics(thematics: String): List<Word> // Уберем LiveData
-    suspend fun getUserWord(wordId: Long): Word
     suspend fun addUserWord(word: Word)
     suspend fun deleteUserWord(wordId: Long)
     suspend fun deleteAllFromGeneralDictionary()

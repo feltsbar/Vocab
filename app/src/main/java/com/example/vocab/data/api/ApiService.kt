@@ -15,6 +15,4 @@ interface ApiService {
         "Authorization: Api-Key " // todo: add API_KEY
     )
     fun getTranslatedText(@Body postBody: PostBody): Single<TranslationInfoListOfData>
-
-
 }

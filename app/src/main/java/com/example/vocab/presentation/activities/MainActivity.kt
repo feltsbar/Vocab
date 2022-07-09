@@ -1,6 +1,7 @@
 package com.example.vocab.presentation.activities
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -31,7 +32,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupUserDictionaryPanel() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.userDictionary.observe(this) {
-            user_dictionary_panel.text = "${it.size} слов всего"
+            user_dictionary_panel.text = if (it.isEmpty()) {
+                "В Вашем словаре еще нет слов"
+            } else {
+                "Слов всего: ${it.size} "
+            }
         }
         viewModel.generalDictionary.observe(this) {
             if (it.isEmpty()) lifecycleScope.launch {
