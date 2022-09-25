@@ -2,6 +2,7 @@ package com.example.vocab.presentation.activities
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupUserDictionaryPanel()
         setupRecyclerView()
+        Toast.makeText(this, "Say hello", Toast.LENGTH_SHORT).show()
         button_open_translator.setOnClickListener {
             val intent = newIntendTranslate(this)
             startActivity(intent)
